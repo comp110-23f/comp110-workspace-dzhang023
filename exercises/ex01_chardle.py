@@ -9,6 +9,7 @@ char = input("Enter a single character:")
 if len(char) != 1:
     print("Error: Character must be a single character.")
     exit()
+print('Searching for ' + char + " in " + word)
 if word[0] == char:
     charfound = True
     charcnt += 1
