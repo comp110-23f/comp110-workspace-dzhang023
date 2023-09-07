@@ -1,7 +1,7 @@
 __author__ = "730630815"
-charcnt = 0
-charfound = False
-word = input("Enter a 5-character word:")
+charcnt: int = 0
+charfound: bool = False
+word: str = input("Enter a 5-character word:")
 if len(word) != 5:
     print("Error: Word must contain 5 characters")
     exit()
