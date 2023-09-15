@@ -1,9 +1,9 @@
 """Docstring."""
 __author__ = "730630815"
-index : int = 0
-boxoutput : str = ''
-secret : str = "python"
-guess : str = input("What is your 6-letter guess? ")
+index: int = 0
+boxoutput: str = ''
+secret: str = "python"
+guess: str = input("What is your 6-letter guess? ")
 while len(guess) != len(secret):
     guess = input("That was not 6 letters! Try again: ")
 while index != len(secret):
