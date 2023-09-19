@@ -1,6 +1,6 @@
 """Docstring."""
 __author__ = "730630815"
-charcnt: int = 0
+charcnt: int = 0 
 charfound: bool = False
 word: str = input("Enter a 5-character word:")
 if len(word) != 5:
