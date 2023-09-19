@@ -22,13 +22,14 @@ def input_guess(properlen: int) -> str:
 def main() -> None:
     secret = 'codes'
     guess = ''
-    for index in range(len(secret)):
+    for index in range(7):
         print(f'=== Turn {index}/6 ===')
         guess = input_guess(len(secret))
         print(emojified(guess,secret))
         if guess == secret:
             print(f"You won in {index}/6 turns!")
             break
-    print('X/6 - Sorry, try again tomorrow!')
+    if guess != secret:
+        print('X/6 - Sorry, try again tomorrow!')
 if __name__ == "__main__":
     main()
