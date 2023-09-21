@@ -32,7 +32,7 @@ def emojified(guessword: str, secretword: str) -> str:
 
 def input_guess(properlen: int) -> str:
     """Ensures that the guess is the proper length."""
-    guess = input(f'Enter a {properlen} letter word: ')
+    guess = input(f'Enter a {properlen} character word: ')
     if guess.isalpha() and len(guess) == properlen:
         return guess
     else:
