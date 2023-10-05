@@ -1,38 +1,37 @@
 """Docstring."""
 __author__ = "730630815"
-def all(intlist: list[int], indiv_int:int) -> bool:
-    for num in intlist:
-        if num != indiv_int:
+
+
+def all(int_list: list[int], indiv_int: int) -> bool:
+    """Finds if all of the numbers in a list are equal to another specified number."""
+    index = 0
+    while index <= len(int_list):
+        if int_list[index] != indiv_int:
             return False
+        index += 1
     return True
-def max(intlist: list[int]) -> int:
-    if len(intlist) == 0:
+
+
+def max(int_list: list[int]) -> int:
+    """Finds the maximum value in a list."""
+    if len(int_list) == 0:
         raise ValueError("max() arg is an empty List")
-    curr_max = intlist[0]
-    for num in intlist:
-        if num >= curr_max:
-            curr_max = num
+    curr_max = int_list[0]
+    index = 0
+    while index <= len(int_list):
+        if int_list[index] >= curr_max:
+            curr_max = int_list[index]
+        index += 1
     return curr_max
+
+
 def is_equal(list_one: list[int], list_two: list[int]) -> bool:
-    for index, num in enumerate(list_one):
-        if num != list_two[index]:
+    """Finds if two provided lists are equal to one another."""
+    if len(list_one) != len(list_two):
+        return False
+    index = 0
+    while index <= len(list_one):
+        if list_one[index] != list_two[index]:
             return False
+        index += 1
     return True
-def only_evens(list_ints: list[int]) -> list[int]:
-    evenints = []
-    for num in list_ints:
-        if num % 2 == 0:
-            evenints.append(num)
-    return evenints
-def concat(list1: list[int], list2: list[int]) -> list[int]:
-    biglist = []
-    for num in list1:
-        biglist.append[num]
-    for num in list2:
-        biglist.append[num]
-    return biglist
-def sub(list_ints: list[int],startind:int, endind: int) -> list[int]:
-    endlist = []
-    for num in list_ints[startind:endind]:
-        endlist.append(num)
-    return endlist
