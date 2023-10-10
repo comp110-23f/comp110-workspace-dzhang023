@@ -57,12 +57,12 @@ def draw_top_tree():
 
 def draw_tree(branch_cnt: int, starting_location: int) -> None:
     """Draws the trunk and then runs a loop to draw a randomized number of branches on the trunk."""
-    branch_index = 0
-    trunk_length = randint(300, 400)
-    trunk_increment = trunk_length / branch_cnt
+    branch_index: int = 0
+    trunk_length: int = randint(300, 400)
+    trunk_increment: float = trunk_length / branch_cnt
     draw_trunk(trunk_length, starting_location)
     while branch_index != branch_cnt:
-        branch_angle = randint(25, 60)
+        branch_angle: int = randint(25, 60)
         setheading(90)
         forward(trunk_increment)
         if branch_index == branch_cnt - 1:
@@ -80,18 +80,18 @@ def draw_plaid_box(block_color: str, girth: int, box_length):
     fillcolor(block_color)
     begin_fill()
     setheading(0)
-    forward(girth/2)
+    forward(girth / 2)
     setheading(90)
     forward(box_length)
     setheading(180)
-    forward(girth/2)
+    forward(girth / 2)
     return_x = xcor()
     return_y = ycor()
-    forward(girth/2)
+    forward(girth / 2)
     setheading(270)
     forward(box_length)
     setheading(0)
-    forward(girth/2)
+    forward(girth / 2)
     end_fill()
     penup()
     setpos(return_x, return_y)
@@ -109,31 +109,30 @@ def draw_neck_and_head(neck_len: int, head_rad: int):
 def draw_axe(length: int, holding_angle: int):
     fillcolor('red')
     begin_fill()
-    width = randint(15, 30)
-    breadth = width * 2 / 3
+    axe_width: int = randint(15, 30)
+    breadth = axe_width * 2 / 3
     setheading(holding_angle)
-    backward(length/3)
+    backward(length / 3)
     forward(length)
-    setheading(holding_angle-90)
-    forward(width)
+    setheading(holding_angle - 90)
+    forward(axe_width)
     setheading(holding_angle)
     forward(breadth)
-    setheading(holding_angle-90)
-    backward(width)
+    setheading(holding_angle - 90)
+    backward(axe_width)
     setheading(holding_angle)
     backward(breadth)
     end_fill()
 
 
-
-def draw_arms(arm_len: int, axe_len:int, torso_size:int):
+def draw_arms(arm_len: int, axe_len: int, torso_size: int):
     color("black")
-    arm_angle = randint(-75, 0)
+    arm_angle: int = randint(-75, 0)
     return_pos_x = xcor()
     return_pos_y = ycor()
     penup()
     setheading(0)
-    forward(torso_size/2)
+    forward(torso_size / 2)
     setheading(arm_angle)
     pendown()
     forward(arm_len)
@@ -141,7 +140,7 @@ def draw_arms(arm_len: int, axe_len:int, torso_size:int):
     penup()
     setpos(return_pos_x, return_pos_y)
     setheading(180)
-    forward(torso_size/2)
+    forward(torso_size / 2)
     pendown()
     setheading(180 - arm_angle)
     forward(arm_len)
@@ -150,20 +149,19 @@ def draw_arms(arm_len: int, axe_len:int, torso_size:int):
     pendown()
 
 
-
 def draw_lumberjack():
     """Draws a randomly sized lumberjack."""
     penup()
     color("black")
     setpos(-300, -200)
-    number_of_plaid_boxes: int = randrange(5,11, 2) 
+    number_of_plaid_boxes: int = randrange(5, 11, 2)
     leg_length: int = randint(50, 100)
     arm_length: int = randint(35, 75)
     torso_length: int = randint(75, 150)
     torso_girth: int = randint(25, 50)
-    torso_increment_size: int = torso_length/number_of_plaid_boxes
-    axe_length: int = randint(75,150)
-    neck_length: int = randint(10,25)   
+    torso_increment_size: float = torso_length / number_of_plaid_boxes
+    axe_length: int = randint(75, 150)
+    neck_length: int = randint(10, 25)
     head_size: int = randint(15, 35)
     pendown()
     setheading(60)
@@ -172,7 +170,7 @@ def draw_lumberjack():
     leg_base_y: int = ycor()
     setheading(-60)
     forward(leg_length)
-    setpos(leg_base_x,leg_base_y)
+    setpos(leg_base_x, leg_base_y)
     setheading(90)
     index: int = 0
     while index != number_of_plaid_boxes:
@@ -185,20 +183,16 @@ def draw_lumberjack():
         index += 1
     draw_neck_and_head(neck_length, head_size)
 
-    
 
-
-
-
-def main(tree_cnt) -> None:
+def main(tree_count: int) -> None:
     """Calls the tree drawing function."""
     index = 0
-    while index != tree_cnt:
+    while index != tree_count:
         if index == 0:
             draw_lumberjack()
         else:
             branches = randint(5, 10)
-            draw_tree(branches, 100 * (index) - 200)
+            draw_tree(branches, 100 * index - 200)
         index += 1
     done()
 
