@@ -151,6 +151,7 @@ def draw_arms(arm_len: int, axe_len: int, torso_size: int):
 
 def draw_lumberjack():
     """Draws a randomly sized lumberjack."""
+    """The lumberjack does not have a face due to his request to remain anonymous."""
     penup()
     color("black")
     setpos(-300, -200)
