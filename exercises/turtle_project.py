@@ -2,11 +2,11 @@
 
 __author__ = "730630816"
 
-from turtle import *
+from turtle import setheading, color, fillcolor, begin_fill, circle, end_fill, penup, setpos, pensize, pendown, forward, goto, right, left, xcor, ycor, backward, done
 from random import randint, randrange
 
 
-def draw_leaf():
+def draw_leaf() -> None:
     """Draws a randomly sized leaf at a random angle on the branch."""
     leaf_angle = randint(30, 150)
     leaf_width = randint(5, 10)
@@ -19,7 +19,7 @@ def draw_leaf():
     color("sienna")
 
 
-def draw_trunk(length: int, start_location: int):
+def draw_trunk(length: int, start_location: float) -> None:
     """Draws the base of the tree at a set width and position."""
     penup()
     color("sienna")
@@ -31,7 +31,7 @@ def draw_trunk(length: int, start_location: int):
     setpos(start_location, -200)
 
 
-def draw_branch(start_location: int, start_y: int):
+def draw_branch(start_location: float, start_y: float) -> None:
     """Draws a branch of the tree and returns the pen back to the trunk."""
     color("sienna")
     branch_width = randint(5, 10)
@@ -44,7 +44,7 @@ def draw_branch(start_location: int, start_y: int):
     pendown()
 
 
-def draw_top_tree():
+def draw_top_tree() -> None:
     """Draws the top of the tree."""
     color("green")
     fillcolor("green")
@@ -55,7 +55,7 @@ def draw_top_tree():
     color("sienna")
 
 
-def draw_tree(branch_cnt: int, starting_location: int) -> None:
+def draw_tree(branch_cnt: int, starting_location: float) -> None:
     """Draws the trunk and then runs a loop to draw a randomized number of branches on the trunk."""
     branch_index: int = 0
     trunk_length: int = randint(300, 400)
@@ -76,7 +76,8 @@ def draw_tree(branch_cnt: int, starting_location: int) -> None:
         branch_index += 1
 
 
-def draw_plaid_box(block_color: str, girth: int, box_length):
+def draw_plaid_box(block_color: str, girth: int, box_length: float) -> None:
+    """Draws the boxes that make up the lumberjack body."""
     fillcolor(block_color)
     begin_fill()
     setheading(0)
@@ -98,7 +99,8 @@ def draw_plaid_box(block_color: str, girth: int, box_length):
     pendown()
 
 
-def draw_neck_and_head(neck_len: int, head_rad: int):
+def draw_neck_and_head(neck_len: int, head_rad: int) -> None:
+    """Draws a randomly sized neck and head."""
     color('black')
     setheading(90)
     forward(neck_len)
@@ -106,7 +108,8 @@ def draw_neck_and_head(neck_len: int, head_rad: int):
     circle(head_rad)
 
 
-def draw_axe(length: int, holding_angle: int):
+def draw_axe(length: int, holding_angle: int) -> None:
+    """Draws a randomly sized axe and axe head."""
     fillcolor('red')
     begin_fill()
     axe_width: int = randint(15, 30)
@@ -125,7 +128,8 @@ def draw_axe(length: int, holding_angle: int):
     end_fill()
 
 
-def draw_arms(arm_len: int, axe_len: int, torso_size: int):
+def draw_arms(arm_len: int, axe_len: int, torso_size: int) -> None:
+    """Draws randomly angled arms of random length."""
     color("black")
     arm_angle: int = randint(-75, 0)
     return_pos_x = xcor()
@@ -149,7 +153,7 @@ def draw_arms(arm_len: int, axe_len: int, torso_size: int):
     pendown()
 
 
-def draw_lumberjack():
+def draw_lumberjack() -> None:
     """Draws a randomly sized lumberjack."""
     """The lumberjack does not have a face due to his request to remain anonymous."""
     penup()
@@ -167,8 +171,8 @@ def draw_lumberjack():
     pendown()
     setheading(60)
     forward(leg_length)
-    leg_base_x: int = xcor()
-    leg_base_y: int = ycor()
+    leg_base_x: float = xcor()
+    leg_base_y: float = ycor()
     setheading(-60)
     forward(leg_length)
     setpos(leg_base_x, leg_base_y)
