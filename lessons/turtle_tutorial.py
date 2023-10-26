@@ -1,4 +1,4 @@
-"""Docstring"""
+"""Docstring."""
 
 from turtle import Turtle, done
 leo: Turtle = Turtle()
