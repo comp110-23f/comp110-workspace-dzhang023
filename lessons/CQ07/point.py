@@ -1,12 +1,15 @@
 """Docstring."""
 
-__author__ = "730630815"
+from __future__ import annotations
 
-from typing import Self
+
+__author__ = "730630815"
 
 
 class Point:
     """Gives an x and y coordinate to a point."""
+    x: float
+    y: float
 
     def __init__(self, x_init: float, y_init: float) -> None:
         """Assigns initial values for x and y."""
@@ -18,8 +21,9 @@ class Point:
         self.x = self.x * factor
         self.y = self.y * factor
 
-    def scale(self, factor: int) -> Self:
+    def scale(self, factor: int) -> Point:
         """Creates a new point given a scaling factor."""
         new_x: float = self.x * factor
         new_y: float = self.y * factor
-        return Point(new_x, new_y)
+        new_point: Point = Point(new_x, new_y)
+        return new_point
