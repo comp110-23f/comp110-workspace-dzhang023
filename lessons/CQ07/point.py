@@ -7,6 +7,7 @@ from typing import Self
 
 class Point:
     """Gives an x and y coordinate to a point."""
+
     def __init__(self, x_init: float, y_init: float) -> None:
         """Assigns initial values for x and y."""
         self.x: float = x_init
@@ -22,4 +23,3 @@ class Point:
         new_x: float = self.x * factor
         new_y: float = self.y * factor
         return Point(new_x, new_y)
-    
