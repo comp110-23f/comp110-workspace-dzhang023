@@ -54,6 +54,8 @@ def alphabetizer(value_list: list[str]) -> dict[str, list[str]]:
     alpha_dict: dict[str, list[str]] = {}
     for value in value_list:
         first_letter = value.lower()[0]
+        if not first_letter.isalpha():
+            raise TypeError("Only letters are allowed to start the words!")
         if first_letter not in alpha_dict:
             alpha_dict[first_letter] = [value]
         else:
@@ -63,6 +65,8 @@ def alphabetizer(value_list: list[str]) -> dict[str, list[str]]:
 
 def update_attendance(attendance_log: dict[str, list[str]], day: str, student: str) -> dict[str, list[str]]:
     """Given an attendance log, adds a student's attendance to the log based on what day it is."""
+    if not day.isalpha():
+        raise TypeError("Please use the actual day of the week.")
     if day not in attendance_log:
         attendance_log[day] = [student]
     else:

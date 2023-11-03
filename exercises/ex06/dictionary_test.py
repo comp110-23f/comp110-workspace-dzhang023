@@ -3,7 +3,7 @@
 __author__ = "730630815"
 
 import pytest
-from dictionary import invert, favorite_color, count
+from dictionary import invert, favorite_color, count, alphabetizer, update_attendance
 
 
 # invert testing#
@@ -58,33 +58,58 @@ def test_count_multiple_values():
 
 
 def test_count_error():
-    test_list_for_count: list[str] = [1, '3', 'd', 'd', 'e', 'a', 'b']
-    print(count(test_list_for_count))
+    with pytest.raises(TypeError):
+        test_list_for_count: list[str] = [1, '3', 'd', 'd', 'e', 'a', 'b']
+        print(count(test_list_for_count))
+    print("Only strings can be used.")
 
 
 # alphabetize testing
 
-def test_alpha_x():
-    pass
+def test_alpha_lowers():
+    test_list_for_alpha: list[str] = ['animal', 'apple', 'angry', 'always', 'bear', 'bare', 'balding', 'apartment']
+    print(alphabetizer(test_list_for_alpha))
+    
 
 
-def test_alpha_y():
-    pass
+def test_alpha_lower_upper():
+    test_list_for_alpha: list[str] = ['animal', 'Apple', 'angry', 'ALways', 'Bear', 'bare', 'BAlding', 'apartment']
+    print(alphabetizer(test_list_for_alpha))
 
 
 def test_alpha_z():
-    pass
+    with pytest.raises(TypeError):
+        test_list_for_alpha: list[str] = ['1e', '2vb', '(>?)', '!!', '@3', '@ba$re', '^BAlding', '2apartment']
+        print(alphabetizer(test_list_for_alpha))
+    print("only letters can start words")
 
 
 # update attendance testing#
 
-def test_update_attendance_x():
-    pass
+def test_update_attendance_thursday():
+    test_attendance_log: dict[str, list[str]] = {'Monday': ["Student A", "Student B", "Student C"], 'Tuesday': ["Student B", "Student C"], 'Wednesday': ["Student C", "Student A"]} 
+    day: str = 'Thursday'
+    students_in_attendance: list[str] = ["Student A", "Student B", "Student C"]
+    for student in students_in_attendance:
+        update_attendance(test_attendance_log, day, student)
+    print(test_attendance_log)
+
+def test_update_attendance_adding_to_wednesday():
+    test_attendance_log: dict[str, list[str]] = {'Monday': ["Student A", "Student B", "Student C"], 'Tuesday': ["Student B", "Student C"], 'Wednesday': ["Student C", "Student A"]} 
+    day: str = 'Wednesday'
+    students_in_attendance: list[str] = ["Student D", "Student E", "Student F"]
+    for student in students_in_attendance:
+        update_attendance(test_attendance_log, day, student)
+    print(test_attendance_log)
 
 
-def test_update_attendance_y():
-    pass
+def test_update_attendance_testing_day_of_week():
+    test_attendance_log: dict[str, list[str]] = {'Monday': ["Student A", "Student B", "Student C"], 'Tuesday': ["Student B", "Student C"], 'Wednesday': ["Student C", "Student A"]} 
+    day: str = '31st'
+    students_in_attendance: list[str] = ["Student D", "Student E", "Student F"]
+    with pytest.raises(TypeError):
+        for student in students_in_attendance:
+            update_attendance(test_attendance_log, day, student)
+    print("Please use the actual day of the week")
 
-
-def test_update_attendance_z():
-    pass
+test_update_attendance_testing_day_of_week()
