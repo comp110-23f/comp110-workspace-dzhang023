@@ -111,4 +111,3 @@ def test_update_attendance_testing_day_of_week():
         for student in students_in_attendance:
             update_attendance(test_attendance_log, day, student)
     print("Please use the actual day of the week")
-
