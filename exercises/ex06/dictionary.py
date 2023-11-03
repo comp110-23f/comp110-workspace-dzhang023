@@ -15,24 +15,33 @@ def invert(dictionary: dict[str, str]) -> dict[str, str]:
 
 def favorite_color(dictionary: dict[str, str]) -> str:
     """Given a dictionary of people and their favorite colors, the function returns the most common favorite color."""
+    multiple_faves: bool = False
     favorite: str = ''
     counter_dict: dict[str, int] = {}
     for name in dictionary:
         if dictionary[name] not in counter_dict:
-            counter_dict[dictionary[name]] = 0
+            counter_dict[dictionary[name].lower()] = 0
         else:
-            counter_dict[dictionary[name]] += 1
+            counter_dict[dictionary[name].lower()] += 1
     current_max = 0
     for color in counter_dict:
+        if counter_dict[color] == current_max:
+            multiple_faves = True
         if counter_dict[color] > current_max:
+            multiple_faves = False
             favorite = color
-    return favorite
+    if not multiple_faves:
+        return "multiple favorite colors"
+    else:
+        return favorite
 
 
 def count(value_list: list[str]) -> dict[str, int]:
     """Given a list of random repeated values, returns the counts of each respective value."""
     counter_dict: dict[str, int] = {}
     for value in value_list:
+        if type(value) != str:
+            raise TypeError("Only strings are allowed")
         if value not in counter_dict:
             counter_dict[value] = 1
         else:
