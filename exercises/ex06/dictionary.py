@@ -15,8 +15,7 @@ def invert(dictionary: dict[str, str]) -> dict[str, str]:
 
 def favorite_color(dictionary: dict[str, str]) -> str:
     """Given a dictionary of people and their favorite colors, the function returns the most common favorite color."""
-    multiple_faves: bool = False
-    favorite: str = ''
+    first_favorite: str = ''
     counter_dict: dict[str, int] = {}
     for name in dictionary:
         if dictionary[name] not in counter_dict:
@@ -25,22 +24,17 @@ def favorite_color(dictionary: dict[str, str]) -> str:
             counter_dict[dictionary[name].lower()] += 1
     current_max = 0
     for color in counter_dict:
-        if counter_dict[color] == current_max:
-            multiple_faves = True
         if counter_dict[color] > current_max:
-            multiple_faves = False
-            favorite = color
-    if not multiple_faves:
-        return "multiple favorite colors"
-    else:
-        return favorite
+            first_favorite = color
+            current_max = counter_dict[color]
+    return first_favorite
 
 
 def count(value_list: list[str]) -> dict[str, int]:
     """Given a list of random repeated values, returns the counts of each respective value."""
     counter_dict: dict[str, int] = {}
     for value in value_list:
-        if type(value) != str:
+        if not isinstance(value, str):
             raise TypeError("Only strings are allowed")
         if value not in counter_dict:
             counter_dict[value] = 1
@@ -70,5 +64,6 @@ def update_attendance(attendance_log: dict[str, list[str]], day: str, student: s
     if day not in attendance_log:
         attendance_log[day] = [student]
     else:
-        attendance_log[day].append(student)
+        if student not in attendance_log[day]:
+            attendance_log[day].append(student)
     return attendance_log
