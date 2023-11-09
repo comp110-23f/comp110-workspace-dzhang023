@@ -4,7 +4,6 @@ __author__ = '730630815'
 
 
 class Bear:
-    
     age: int
     hunger_score: int
 
@@ -12,7 +11,7 @@ class Bear:
         """Initiation Method"""
         self.age: int = 0
         self.hunger_score: int = 0
-    
+
     def one_day(self) -> None:
         """Simulates behavior after one day."""
         self.age += 1

@@ -2,17 +2,17 @@
 
 __author__ = '730630815'
 
-#re add from exercises.ex08 import
-from exercises.ex08.fish import Fish
 from exercises.ex08.bear import Bear
+# re add from exercises.ex08 import
+from exercises.ex08.fish import Fish
+
 
 class River:
-
     day: int
     bears: list[Bear]
     fish: list[Fish]
-    
-    def __init__(self, num_fish: int, num_bears:int) -> None:
+
+    def __init__(self, num_fish: int, num_bears: int) -> None:
         """New River with num_fish Fish and num_bears Bears"""
         self.day: int = 0
         self.fish: list[Fish] = []
@@ -38,11 +38,11 @@ class River:
 
     def bears_eating(self) -> None:
         """Simulates fish consumption by bears."""
-        if len(self.fish)/len(self.bears) >= 5:
+        if len(self.fish) / len(self.bears) >= 5:
             for indiv_bear in self.bears:
                 self.remove_fish(3)
                 indiv_bear.eat(3)
-    
+
     def check_hunger(self) -> None:
         """Removes starving bears."""
         new_bear_list: list[Bear] = []
@@ -62,18 +62,18 @@ class River:
         new_bear_amount: int = len(self.bears) // 2
         for x in range(new_bear_amount):
             self.bears.append(Bear())
-    
+
     def remove_fish(self, amount: int) -> None:
         """Removes the fish at the front of the fish list."""
         for x in range(amount):
             self.fish.pop(0)
-    
+
     def view_river(self) -> None:
         """Prints the information for any given day."""
         print(f"~~~ Day {self.day}: ~~~")
         print(f"Fish population: {len(self.fish)}")
         print(f"Bear population: {len(self.bears)}")
-            
+
     def one_river_day(self) -> None:
         """Simulate one day of life in the river"""
         # Increase day by 1
@@ -96,7 +96,7 @@ class River:
         self.repopulate_bears()
         # Visualize River
         self.view_river()
-            
+
     def one_river_week(self) -> None:
         """Simulates one week."""
         for x in range(7):
