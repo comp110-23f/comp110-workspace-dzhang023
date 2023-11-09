@@ -24,6 +24,7 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self) -> None:
+        """Removes old animals."""
         new_fish_list: list[Fish] = []
         new_bear_list: list[Bear] = []
         for animal in self.fish:
@@ -36,12 +37,14 @@ class River:
         self.bears = new_bear_list
 
     def bears_eating(self) -> None:
-        for indiv_bear in self.bears:
-            if len(self.fish)/len(self.bears) >= 5:
+        """Simulates fish consumption by bears."""
+        if len(self.fish)/len(self.bears) >= 5:
+            for indiv_bear in self.bears:
                 self.remove_fish(3)
                 indiv_bear.eat(3)
     
     def check_hunger(self) -> None:
+        """Removes starving bears."""
         new_bear_list: list[Bear] = []
         for indiv_bear in self.bears:
             if indiv_bear.hunger_score >= 0:
@@ -49,20 +52,24 @@ class River:
         self.bears = new_bear_list
 
     def repopulate_fish(self) -> None:
+        """Repopulates fish."""
         new_fish_amount: int = (len(self.fish) // 2) * 4
         for x in range(new_fish_amount):
             self.fish.append(Fish())
 
     def repopulate_bears(self) -> None:
+        """Repopulates bears."""
         new_bear_amount: int = len(self.bears) // 2
         for x in range(new_bear_amount):
             self.bears.append(Bear())
     
     def remove_fish(self, amount: int) -> None:
+        """Removes the fish at the front of the fish list."""
         for x in range(amount):
             self.fish.pop(0)
     
     def view_river(self) -> None:
+        """Prints the information for any given day."""
         print(f"~~~ Day {self.day}: ~~~")
         print(f"Fish population: {len(self.fish)}")
         print(f"Bear population: {len(self.bears)}")
@@ -91,5 +98,6 @@ class River:
         self.view_river()
             
     def one_river_week(self) -> None:
+        """Simulates one week."""
         for x in range(7):
             self.one_river_day()
