@@ -8,13 +8,24 @@ __author__ = "730630815"
 
 class Point:
     """Gives an x and y coordinate to a point."""
-    x: float
-    y: float
+    x: float = 0
+    y: float = 0
 
-    def __init__(self, x_init: float, y_init: float) -> None:
+    def __init__(self, x_init: float = 0.0, y_init: float = 0.0) -> None:
         """Assigns initial values for x and y."""
         self.x: float = x_init
         self.y: float = y_init
+
+    def __str__(self) -> str:   
+        return "x: %s; y: %s" % (self.x, self.y)
+    
+    def __mul__(self, factor: int | float) -> None:
+        self.x = self.x * factor
+        self.y = self.y * factor
+
+    def __add__(self, factor: int | float):
+        self.x += factor
+        self.y += factor
 
     def scale_by(self, factor: int) -> None:
         """Changes the x and y values of a given point and scaling factor."""
