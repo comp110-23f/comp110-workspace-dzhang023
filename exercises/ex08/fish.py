@@ -1,9 +1,10 @@
-"""File to define Fish class"""
+"""File to define Fish class."""
 
 __author__ = '730630815'
 
 
 class Fish:
+    """Fish Class."""
     age: int
 
     def __init__(self) -> None:

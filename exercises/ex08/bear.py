@@ -1,9 +1,10 @@
-"""File to define Bear class"""
+"""File to define Bear class."""
 
 __author__ = '730630815'
 
 
 class Bear:
+    """Bear Class."""
     age: int
     hunger_score: int
 

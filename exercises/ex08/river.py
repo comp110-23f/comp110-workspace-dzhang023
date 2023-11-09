@@ -1,4 +1,4 @@
-"""File to define River class"""
+"""File to define River class."""
 
 __author__ = '730630815'
 
@@ -8,6 +8,7 @@ from exercises.ex08.fish import Fish
 
 
 class River:
+    """River class."""
     day: int
     bears: list[Bear]
     fish: list[Fish]
@@ -38,8 +39,9 @@ class River:
 
     def bears_eating(self) -> None:
         """Simulates fish consumption by bears."""
-        if len(self.fish) / len(self.bears) >= 5:
-            for indiv_bear in self.bears:
+        for indiv_bear in self.bears:
+            one_five_ratio: int = len(self.fish) // len(self.bears)
+            if one_five_ratio > 0:
                 self.remove_fish(3)
                 indiv_bear.eat(3)
 
