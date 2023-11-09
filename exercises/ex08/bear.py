@@ -9,7 +9,7 @@ class Bear:
     hunger_score: int
 
     def __init__(self) -> None:
-        """Initiation Method"""
+        """Initiation Method."""
         self.age: int = 0
         self.hunger_score: int = 0
 

@@ -8,7 +8,7 @@ class Fish:
     age: int
 
     def __init__(self) -> None:
-        """Initiation Method"""
+        """Initiation Method."""
         self.age: int = 0
 
     def one_day(self) -> None:

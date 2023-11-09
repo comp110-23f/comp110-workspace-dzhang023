@@ -14,7 +14,7 @@ class River:
     fish: list[Fish]
 
     def __init__(self, num_fish: int, num_bears: int) -> None:
-        """New River with num_fish Fish and num_bears Bears"""
+        """New River with num_fish Fish and num_bears Bears."""
         self.day: int = 0
         self.fish: list[Fish] = []
         self.bears: list[Bear] = []
@@ -68,7 +68,8 @@ class River:
     def remove_fish(self, amount: int) -> None:
         """Removes the fish at the front of the fish list."""
         for x in range(amount):
-            self.fish.pop(0)
+            if len(self.fish) > 0:
+                self.fish.pop(0)
 
     def view_river(self) -> None:
         """Prints the information for any given day."""
@@ -77,7 +78,7 @@ class River:
         print(f"Bear population: {len(self.bears)}")
 
     def one_river_day(self) -> None:
-        """Simulate one day of life in the river"""
+        """Simulate one day of life in the river."""
         # Increase day by 1
         self.day += 1
         # Simulate one day for all Bears
