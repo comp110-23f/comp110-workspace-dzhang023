@@ -40,8 +40,7 @@ class River:
     def bears_eating(self) -> None:
         """Simulates fish consumption by bears."""
         for indiv_bear in self.bears:
-            one_five_ratio: int = len(self.fish) // len(self.bears)
-            if one_five_ratio > 0:
+            if len(self.fish) >= 5:
                 self.remove_fish(3)
                 indiv_bear.eat(3)
 
