@@ -17,15 +17,20 @@ class Point:
         self.y: float = y_init
 
     def __str__(self) -> str:   
+        """Overrides str command."""
         return "x: %s; y: %s" % (self.x, self.y)
     
-    def __mul__(self, factor: int | float) -> None:
-        self.x = self.x * factor
-        self.y = self.y * factor
+    def __mul__(self, factor: int | float) -> Point:
+        """Ovverides multiplication operator."""
+        new_x: float = self.x * factor
+        new_y: float = self.y * factor
+        return Point(new_x, new_y)
 
-    def __add__(self, factor: int | float):
-        self.x += factor
-        self.y += factor
+    def __add__(self, factor: int | float) -> Point:
+        """Overrides addition operator."""
+        new_x: float = self.x + factor
+        new_y: float = self.y + factor
+        return Point(new_x, new_y)
 
     def scale_by(self, factor: int) -> None:
         """Changes the x and y values of a given point and scaling factor."""
