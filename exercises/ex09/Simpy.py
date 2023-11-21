@@ -40,11 +40,13 @@ class Simpy:
                 current_val += step_val
 
     def sum(self) -> float:
+        """Sum function."""
         return sum(self.values)
 
-    def __add__(self, operand: Simpy | float) -> Simpy:
+    def __add__(self, operand: Union[Simpy, float]) -> Simpy:
+        """Addition magic method."""
         new_list: list[float] = []
-        if type(operand) == float:
+        if type(operand) is float:
             for value in self.values:
                 new_list.append(value + operand)
         else:
@@ -53,9 +55,10 @@ class Simpy:
                 new_list.append(x + self.values[index])
         return Simpy(new_list)
     
-    def __pow__(self, operand: Simpy | float) -> Simpy:
+    def __pow__(self, operand: Union[Simpy, float]) -> Simpy:
+        """Exponential magic method."""
         new_list: list[float] = []
-        if type(operand) == float:
+        if type(operand) is float:
             for value in self.values:
                 new_list.append(value ** operand)
         else:
@@ -64,9 +67,10 @@ class Simpy:
                 new_list.append(self.values[index] ** x)
         return Simpy(new_list)
     
-    def __eq__(self, operand: Simpy | float) -> list[bool]:
+    def __eq__(self, operand: Union[Simpy, float]) -> list[bool]:
+        """Equality magic method."""
         new_list: list[float] = []
-        if type(operand) == float:
+        if type(operand) is float:
             for value in self.values:
                 new_list.append(value == operand)
         else:
@@ -75,9 +79,10 @@ class Simpy:
                 new_list.append(self.values[index] == x)
         return new_list
     
-    def __gt__(self, operand: Simpy | float) -> list[bool]:
+    def __gt__(self, operand: Union[Simpy, float]) -> list[bool]:
+        """Greater than magic method."""
         new_list: list[float] = []
-        if type(operand) == float:
+        if type(operand) is float:
             for value in self.values:
                 new_list.append(value > operand)
         else:
@@ -86,9 +91,10 @@ class Simpy:
                 new_list.append(self.values[index] > x)
         return new_list
     
-    def __getitem__(self, operand: int | list[bool]) -> float | Simpy:
+    def __getitem__(self, operand: Union[int, list[bool]]) -> Union[float, Simpy]:
+        """Bracket magic method."""
         new_list: list[float] = []
-        if type(operand) == int:
+        if type(operand) is int:
             return self.values[operand]
         else:
             assert len(operand) == len(self.values)
@@ -96,3 +102,4 @@ class Simpy:
                 if x:
                     new_list.append(self.values[index])
             return Simpy(new_list)
+        
