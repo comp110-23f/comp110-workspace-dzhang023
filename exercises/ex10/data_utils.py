@@ -23,6 +23,7 @@ def read_csv_rows(path: str) -> list[dict[str, str]]:
                 result.append(indiv_row)
     return result
 
+
 def column_values(table: list[dict[str, str]], column: str) -> list[str]:
     """Returns values in a table column."""
     result: list[str] = []
@@ -42,6 +43,8 @@ def columnar(table: list[dict[str, str]]) -> dict[str, list[str]]:
 def head(table: dict[str, list[str]], num_rows: int) -> dict[str, list[str]]:
     """Returns smaller table with set amount of rows."""
     result: dict[str, list[str]] = {}
+    if num_rows >= len(table.keys()):
+        return table
     for column in table.keys():
         smaller_list: list[str] = []
         for i in range(num_rows):
@@ -73,6 +76,7 @@ def concat(table_one: dict[str, list[str]], table_two: dict[str, list[str]]) -> 
 
 
 def count(key_list: list[str]) -> dict[str, int]:
+    """Given a list of values, returns the counts of each value."""
     result: dict[str, int] = {}
     for key in key_list:
         if key in result.keys():
